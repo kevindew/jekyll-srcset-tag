@@ -88,7 +88,7 @@ And the following images
 
 The syntax for `srcset` is `{% srcset path/to/your/image.jpg [ppi:x,y,z] [html attributes] %}{% endsrcset %}`
 
-The syntax for `srcset_source` is {% srcset_source [media:string] [size:string] [width:int] [height:int] %}
+The syntax for `srcset_source` is `{% srcset_source [media:string] [size:string] [width:int] [height:int] %}`
 
 ## Contribute
 
