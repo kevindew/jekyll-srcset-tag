@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module Jekyll
   module SrcsetTag
     module Resizer
