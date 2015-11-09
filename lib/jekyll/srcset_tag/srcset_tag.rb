@@ -19,6 +19,8 @@ module Jekyll
         # set keep files
         settings = srcset_settings(context)
         site = context.registers[:site]
+        site.config['keep_files'] << settings['output'] unless site.config['keep_files'].include?(settings['output'])
+
         image = image File.join(site.source, settings['source']),
                       File.join(site.dest, settings['output']),
                       '/' + settings['output'],
