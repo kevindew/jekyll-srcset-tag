@@ -69,7 +69,7 @@ module Jekyll
       def srcset_settings(context)
         settings = context.registers[:site].config['srcset']
         settings ||= {}
-        settings['source'] ||= '.'
+        settings['source'] ||= '_assets/images/fullsize'
         settings['output'] ||= 'images/generated'
         settings
       end

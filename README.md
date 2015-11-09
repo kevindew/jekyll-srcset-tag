@@ -56,7 +56,7 @@ Create a plugin for it
 
 ### Set up your config
 
-By default this plugin expects to find your source images to be relative to your file directory and will output them in an 
+By default this plugin expects to find your source images in _assets/images/fullsize and will output them in an 
 images/generated directory.
 
 You can tweak this in your config
@@ -70,21 +70,21 @@ You can tweak this in your config
 
 Example syntax:
 
-    {% srcset _assets/images/fullsize/movies/terminator.jpg ppi:1,2 alt='Terminator' %}
+    {% srcset movies/terminator.jpg ppi:1,2 alt='Terminator' %}
         {% srcset_source media:'(min-width: 400px)' size:'512px' width:512 %}
         {% srcset_source width:320 %}
     {% endsrcset %}
 
 This will generate the following HTML
 
-    <img src="/images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/320x256.jpg" srcset="/images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/1024x819.jpg 1024w, /images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/512x410.jpg 512w, /images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/640x512.jpg 640w, /images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/320x256.jpg 320w" sizes="(min-width: 400px) 512px, 100vw" alt='Terminator' />    
+    <img src="/images/generated/movies/terminator.jpg-5c03014/320x256.jpg" srcset="/images/generated/movies/terminator.jpg-5c03014/1024x819.jpg 1024w, /images/generated/movies/terminator.jpg-5c03014/512x410.jpg 512w, /images/generated/movies/terminator.jpg-5c03014/640x512.jpg 640w, /images/generated/movies/terminator.jpg-5c03014/320x256.jpg 320w" sizes="(min-width: 400px) 512px, 100vw" alt='Terminator' />    
 
 And the following images
 
-    .jekyll/images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/320x256.jpg
-    .jekyll/images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/512x410.jpg
-    .jekyll/images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/640x512.jpg
-    .jekyll/images/generated/_assets/images/fullsize/movies/terminator.jpg-5c03014/1024x819.jpg
+    .jekyll/images/generated/movies/terminator.jpg-5c03014/320x256.jpg
+    .jekyll/images/generated/movies/terminator.jpg-5c03014/512x410.jpg
+    .jekyll/images/generated/movies/terminator.jpg-5c03014/640x512.jpg
+    .jekyll/images/generated/movies/terminator.jpg-5c03014/1024x819.jpg
 
 The syntax for `srcset` is `{% srcset path/to/your/image.jpg [ppi:x,y,z] [html attributes] %}{% endsrcset %}`
 
