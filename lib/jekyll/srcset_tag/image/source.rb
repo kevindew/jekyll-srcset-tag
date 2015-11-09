@@ -1,5 +1,5 @@
 module Jekyll
-  module Srcset
+  module SrcsetTag
     class Image::Source
 
       attr_reader :media, :size, :width, :height

@@ -3,7 +3,7 @@ require_relative 'image/source'
 require 'nokogiri'
 
 module Jekyll
-  module Srcset
+  module SrcsetTag
     class SrcsetTag < Liquid::Block
 
       def initialize(tag_name, markup, tokens)

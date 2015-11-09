@@ -1,7 +1,7 @@
 require 'cgi'
 
 module Jekyll
-  module Srcset
+  module SrcsetTag
     class SrcsetSourceTag < Liquid::Tag
 
       def initialize(tag_name, markup, tokens)

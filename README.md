@@ -1,11 +1,11 @@
-# Jekyll Srcset
+# Jekyll Srcset Tag
 
-This gem allows you to use the [srcset]() variety of responsive images in your Jekyll project. 
+This gem allows you to use the [srcset](https://responsiveimages.org/) variety of responsive images in your Jekyll project. 
 It takes a path to a fullsize image and will generate resized images at the sizes and ppi's specified in your jekyll output.
 
 It's still early days on this, seems to work in a quick build, but we're getting started putting it through something more substantial that should help improve it.
 
-It borrows heavily from the work done in [Jekyll Picture-tag](https://github.com/robwierzbowski/jekyll-picture-tag) by Rob Wierzbowski - It's origins lie in a messy hacked version of that plugin. This differs by supporting srcset and a few other tweaks that resolved some of the problems I was having with it.
+It borrows heavily from the work done in [Jekyll Picture Tag](https://github.com/robwierzbowski/jekyll-picture-tag) by Rob Wierzbowski - It's origins lie in a [messy hacked version](https://gist.github.com/kevindew/99a955b3f9e06c0a3f2f) of that plugin. This differs by supporting srcset and a few other tweaks that resolved some of the problems I was having with it.
 
 ## Installation
 
@@ -15,7 +15,7 @@ It borrows heavily from the work done in [Jekyll Picture-tag](https://github.com
 
 Add the following to your `Gemfile`
 
-    gem 'jekyll-srcset', '~> 0.1'
+    gem 'jekyll-srcset-tag', '~> 0.1'
 
 Then run
 
@@ -34,7 +34,7 @@ Create a `Gemfile`
 
     # Gemfile
     source 'https://rubygems.org'
-    gem 'jekyll-srcset', '~> 0.1'
+    gem 'jekyll-srcset-tag', '~> 0.1'
 
 Then run
 
@@ -44,13 +44,13 @@ Then run
 
 Install the gem
     
-    gem install 'jekyll-srcset'
+    gem install 'jekyll-srcset-tag'
 
 Create a plugin for it
 
-    # _plugins/jekyll_srcset.rb
+    # _plugins/jekyll_srcset_tag.rb
     require "rubygems"
-    require "jekyll-srcset"
+    require "jekyll-srcset-tag"
 
 ## Usage
 
@@ -97,4 +97,3 @@ Please do in anyway you like - I bet making this doc better would be a good plac
 ## License
 
 MIT
-

@@ -4,7 +4,7 @@ require 'mini_magick'
 require_relative 'resizer'
 
 module Jekyll
-  module Srcset
+  module SrcsetTag
     class Image
 
       attr_reader :source_path, :output_path, :web_output_path, :image_path, :ppi, :sources, :html_attributes

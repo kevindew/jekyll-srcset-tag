@@ -1,5 +1,5 @@
 module Jekyll
-  module Srcset
+  module SrcsetTag
     module Resizer
       def self.resize(image, destination_dir, filename, width, height)
         FileUtils.mkdir_p(destination_dir) unless File.exist?(destination_dir)
