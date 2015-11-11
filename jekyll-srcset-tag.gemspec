@@ -18,5 +18,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.required_ruby_version = '>= 2.1.0'
+  gem.add_runtime_dependency 'jekyll', '>= 2.0.0'
+  gem.add_dependency 'nokogiri', '~> 1.6'
+  gem.add_dependency 'mini_magick', '~> 4.3'
 
 end
