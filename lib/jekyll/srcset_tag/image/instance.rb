@@ -5,17 +5,14 @@ module Jekyll
       attr_reader :width, :height, :image, :extension, :image_width, :image_height, :output_width, :output_height,
                   :undersized
 
-      def initialize(width:, height:, extension:)
+      def initialize(width:, height:, extension:, image:)
         @width = width
         @height = height
         @extension = extension
-      end
-
-      def for_image!(image)
         @image = image
         @image_width = image[:width].to_i
         @image_height = image[:height].to_i
-        calculate_output_dimensions!
+        calculate_output_dimensions!        
       end
 
       def filename

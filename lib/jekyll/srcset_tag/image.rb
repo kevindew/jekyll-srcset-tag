@@ -20,15 +20,8 @@ module Jekyll
       end
 
       def generate_images!
-        unless images_exist?
-          original = MiniMagick::Image.open File.join(source_path, image_path)
-          instances.each { |instance| instance.for_image!(original) }
-          resize_images! uniq_instances, original
-        end
-      end
-
-      def images_exist?
-        Dir.exist? output_dir
+        needed_instances = uniq_instances.select { |instance| !File.exist?(File.join(output_dir, instance.filename)) }
+        resize_images! needed_instances
       end
 
       def instances
@@ -71,10 +64,12 @@ module Jekyll
         all_sources = sources.map do |source|
           reverse_ppi.map { |ppi| [source, ppi] }
         end.flatten(1)
+        original = MiniMagick::Image.open File.join(source_path, image_path)
         all_sources.map do |(source, ppi)|
           Instance.new width: (source.width ? (source.width.to_f * ppi).round : nil),
                        height: (source.height ? (source.height.to_f * ppi).round : nil),
-                       extension: File.extname(image_path)
+                       extension: File.extname(image_path),
+                       image: original
         end
       end
 
@@ -88,13 +83,13 @@ module Jekyll
         sources.map { |source| source.size_string }
       end
 
-      def resize_images!(instances, original)
+      def resize_images!(instances)
         if instances.any? { |i| i.undersized }
           warn "Warning:".yellow + " #{image_path} is smaller than the requested output file. " +
                "It will be resized without upscaling."
         end
         instances.each do |instance|
-          Resizer::resize(original, output_dir, instance.filename, instance.output_width, instance.output_height)
+          Resizer::resize(instance.image, output_dir, instance.filename, instance.output_width, instance.output_height)
           puts "Generated #{File.join(output_dir, instance.filename)}"
         end
       end
