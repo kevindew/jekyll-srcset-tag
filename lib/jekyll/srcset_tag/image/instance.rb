@@ -42,17 +42,16 @@ module Jekyll
                            elsif width
                              width.to_f / image_ratio
                            else
-                             image_height
+                             image_height.to_f
                            end
-
         generated_ratio = generated_width / generated_height
 
         if image_width < generated_width || image_height < generated_height
           @undersized = true
-          generated_width = if image_ratio > generated_ratio
+          generated_width = if image_ratio < generated_ratio
                               image_width
                             else
-                              image_height / generated_ratio
+                              image_height * generated_ratio
                             end
           generated_height = if image_ratio > generated_ratio
                                image_height
