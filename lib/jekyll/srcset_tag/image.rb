@@ -35,9 +35,11 @@ module Jekyll
       def to_html
         srcs = image_srcs
         src = CGI.escape_html(srcs.last[0])
+        show_srcset = srcs.length > 1
         srcset = CGI.escape_html(srcs.map {|path, size| "#{path} #{size}w" }.join(', '))
         sizes = CGI::escape_html(source_sizes.join(', '))
-        "<img src=\"#{src}\" srcset=\"#{srcset}\" sizes=\"#{sizes}\" #{html_attributes}/>\n"
+        srcset_attrs = show_srcset ? " srcset=\"#{srcset}\" sizes=\"#{sizes}\"" : ''
+        "<img src=\"#{src}\"#{srcset_attrs} #{html_attributes}/>\n"
       end
 
       def digest
