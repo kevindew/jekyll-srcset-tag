@@ -16,7 +16,6 @@ module Jekyll
                                         .render(context)
                                         .gsub(/\\\{\\\{|\\\{\\%/, '\{\{' => '{{', '\{\%' => '{%')
 
-        # set keep files
         settings = srcset_settings(context)
         site = context.registers[:site]
         site.config['keep_files'] << settings['output'] unless site.config['keep_files'].include?(settings['output'])
@@ -29,6 +28,8 @@ module Jekyll
         image.generate_images!
         image.to_html
       end
+
+      protected
 
       def sources(content)
         # return sources objects
@@ -74,6 +75,14 @@ module Jekyll
         settings['source'] ||= '_assets/images/fullsize'
         settings['output'] ||= 'images/generated'
         settings
+      end
+
+      def register_regenerate(context, image)
+        site = context.registers[:site]
+        if context.registers[:page] and context.registers[:page].has_key? 'path'
+          site.regenerator.add_dependency site.in_source_dir(context.registers[:page]['path']),
+                                          image.source_image_path
+        end
       end
     end
   end

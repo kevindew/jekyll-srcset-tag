@@ -18,6 +18,8 @@ module Jekyll
         '<source ' + markup.join(' ') +  ' />'
       end
 
+      protected
+
       def markup_to_hash(markup)
         matches = markup.scan(markup_regex)
         matches.each_with_object({}) do |match, memo|

@@ -59,6 +59,14 @@ module Jekyll
         File.join(web_output_path, image_path + '-' + digest.slice(0, 7))
       end
 
+      def source_image_path
+        File.join(source_path, image_path)
+      end
+
+      def output_image_paths
+        uniq_instances.map { |instance| File.join(output_dir, instance.filename)}
+      end      
+
       protected
 
       def create_instances

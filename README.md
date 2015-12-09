@@ -1,6 +1,6 @@
 # Jekyll Srcset Tag
 
-This gem allows you to use the [srcset](https://responsiveimages.org/) variety of responsive images in your Jekyll project. 
+This gem allows you to use the [srcset](https://responsiveimages.org/) variety of responsive images in your Jekyll project.
 It takes a path to a fullsize image and will generate resized images at the sizes and ppi's specified in your jekyll output.
 
 It's still early days on this, seems to work in a quick build, but we're getting started putting it through something more substantial that should help improve it.
@@ -38,12 +38,12 @@ Create a `Gemfile`
 
 Then run
 
-    $ bundle install      
+    $ bundle install
 
 ### System Gem
 
 Install the gem
-    
+
     gem install 'jekyll-srcset-tag'
 
 Create a plugin for it
@@ -56,7 +56,7 @@ Create a plugin for it
 
 ### Set up your config
 
-By default this plugin expects to find your source images in _assets/images/fullsize and will output them in an 
+By default this plugin expects to find your source images in _assets/images/fullsize and will output them in an
 images/generated directory.
 
 You can tweak this in your config
@@ -65,6 +65,11 @@ You can tweak this in your config
     srcset:
         source: _assets/images/fullsize
         output: images/resized
+
+You should add an entry to keep_files, otherwise on incremental builds jekyll will delete the files
+
+    # _config.yml
+    keep_files: ['images/generated']
 
 ### Put it in your liquid templates
 
@@ -77,7 +82,7 @@ Example syntax:
 
 This will generate the following HTML
 
-    <img src="/images/generated/movies/terminator.jpg-5c03014/320x256.jpg" srcset="/images/generated/movies/terminator.jpg-5c03014/1024x819.jpg 1024w, /images/generated/movies/terminator.jpg-5c03014/512x410.jpg 512w, /images/generated/movies/terminator.jpg-5c03014/640x512.jpg 640w, /images/generated/movies/terminator.jpg-5c03014/320x256.jpg 320w" sizes="(min-width: 400px) 512px, 100vw" alt='Terminator' />    
+    <img src="/images/generated/movies/terminator.jpg-5c03014/320x256.jpg" srcset="/images/generated/movies/terminator.jpg-5c03014/1024x819.jpg 1024w, /images/generated/movies/terminator.jpg-5c03014/512x410.jpg 512w, /images/generated/movies/terminator.jpg-5c03014/640x512.jpg 640w, /images/generated/movies/terminator.jpg-5c03014/320x256.jpg 320w" sizes="(min-width: 400px) 512px, 100vw" alt='Terminator' />
 
 And the following images
 
