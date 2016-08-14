@@ -3,16 +3,17 @@ module Jekyll
     class Image::Instance
 
       attr_reader :width, :height, :image, :extension, :image_width, :image_height, :output_width, :output_height,
-                  :undersized
+                  :undersized, :fallback
 
-      def initialize(width:, height:, extension:, image:)
+      def initialize(width:, height:, extension:, image:, fallback:)
         @width = width
         @height = height
         @extension = extension
         @image = image
         @image_width = image[:width].to_i
         @image_height = image[:height].to_i
-        calculate_output_dimensions!        
+        @fallback = fallback
+        calculate_output_dimensions!
       end
 
       def filename

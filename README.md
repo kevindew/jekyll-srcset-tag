@@ -95,6 +95,8 @@ The syntax for `srcset` is `{% srcset path/to/your/image.jpg [ppi:x,y,z] [html a
 
 The syntax for `srcset_source` is `{% srcset_source [media:string] [size:string] [width:int] [height:int] %}`
 
+You can optionally add `fallback:true` as an option to srcset_source to specify which image path will be output in the src attribute and thus rendered on older browsers.
+
 ## Contribute
 
 Please do in anyway you like - I bet making this doc better would be a good place to start. Pull requests welcome.

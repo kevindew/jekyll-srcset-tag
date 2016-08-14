@@ -38,9 +38,9 @@ module Jekyll
           Image::Source.new(width: source.attr('width'),
                             height: source.attr('height'),
                             media: source.attr('media'),
-                            size: source.attr('size'))
+                            size: source.attr('size'),
+                            fallback: source.attr('fallback') == 'true')
         end
-
       end
 
       def image(source_path, output_path, web_output_path, markup, sources)

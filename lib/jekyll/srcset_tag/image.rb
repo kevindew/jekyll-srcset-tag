@@ -34,7 +34,7 @@ module Jekyll
 
       def to_html
         srcs = image_srcs
-        src = CGI.escape_html(srcs.last[0])
+        src = CGI.escape_html(fallback_src)
         show_srcset = srcs.length > 1
         srcset = CGI.escape_html(srcs.map {|path, size| "#{path} #{size}w" }.join(', '))
         sizes = CGI::escape_html(source_sizes.join(', '))
@@ -65,7 +65,7 @@ module Jekyll
 
       def output_image_paths
         uniq_instances.map { |instance| File.join(output_dir, instance.filename)}
-      end      
+      end
 
       protected
 
@@ -79,14 +79,24 @@ module Jekyll
           Instance.new width: (source.width ? (source.width.to_f * ppi).round : nil),
                        height: (source.height ? (source.height.to_f * ppi).round : nil),
                        extension: File.extname(image_path),
-                       image: original
+                       image: original,
+                       fallback: source.fallback
         end
       end
 
       def image_srcs
         uniq_instances.map do |instance|
-          [File.join(web_output_dir, instance.filename), instance.output_width.to_s]
+          [instance_path(instance), instance.output_width.to_s]
         end
+      end
+
+      def instance_path(instance)
+        File.join(web_output_dir, instance.filename)
+      end
+
+      def fallback_src
+        fallbacks = uniq_instances.select { |instance| instance.fallback }
+        fallbacks.empty? ? image_srcs.last[0] : instance_path(fallbacks.last)
       end
 
       def source_sizes
