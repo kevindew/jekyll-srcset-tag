@@ -9,7 +9,7 @@ It borrows heavily from the work done in [Jekyll Picture Tag](https://github.com
 
 ## Installation
 
-### Bundler
+### Bundler
 
 #### Already Have a Gemfile?
 
